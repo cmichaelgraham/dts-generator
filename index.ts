@@ -1,4 +1,5 @@
 /// <reference path="./typings/tsd" />
+/// <reference path="./tsextra" />
 
 import fs = require('fs');
 import glob = require('glob');
@@ -9,11 +10,6 @@ import ts = require('typescript');
 interface DiagnosticTypeChecker extends ts.TypeChecker {
 	getEmitResolver(): ts.EmitResolver;
 }
-
-// declare module ts {
-// 	export function createEmitHostFromProgram(program: ts.Program): any;
-// 	export function emitFiles(resolver: ts.EmitResolver, host: any, targetSourceFile?: ts.SourceFile): ts.EmitResult;
-// }
 
 interface Options {
 	baseDir: string;

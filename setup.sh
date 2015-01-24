@@ -4,9 +4,13 @@ if [ ! -d "node_modules" ]; then
 	npm install
 fi
 
-echo 'tsc built from 2052ac3 or later is necessary for success!'
-echo '(Run `npm install` inside node_module/typescript and then'
-echo ' run `jake LKG` to get it built in the right place)'
+# As long as we're using a pre-release typescript, we need to rebuild the
+# compiler. Once we switch to a real release, the next 4 lines can be removed.
+cd node_modules/typescript
+npm install
+./node_modules/.bin/jake LKG
+cd ../..
+
 tsd reinstall
 tsd rebundle
 rm -rf typings/typescript

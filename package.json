@@ -11,5 +11,8 @@
   "devDependencies": {
     "typescript": "https://github.com/Microsoft/typescript/archive/2052ac39588d04d21e8cbaf26a3cacdb1a4eb150.tar.gz",
     "tsd": "next"
+  },
+  "scripts": {
+    "install": "./setup.sh"
   }
 }
