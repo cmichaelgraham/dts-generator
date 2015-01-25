@@ -20,6 +20,7 @@ interface Options {
 	excludes?: string[];
 	eol?: string;
 	indent?: string;
+	main?: string;
 	name: string;
 	out: string;
 	target?: ts.ScriptTarget;
@@ -141,6 +142,18 @@ export function generate(options: Options) {
 			);
 		}
 	});
+
+	if (options.main) {
+		console.log(`Generating main module declaration`);
+
+		var sourceFile = program.getSourceFile(pathUtil.join(baseDir, options.main));
+		var sourceModuleId = options.name + sourceFile.filename.slice(baseDir.length, -3);
+
+		output.write('declare module \'' + options.name + '\' {' + eol + indent);
+		output.write('import main = require(\'' + sourceModuleId + '\');' + eol + indent);
+		output.write('export = main;' + eol);
+		output.write('}' + eol);
+	}
 
 	output.end();
 
