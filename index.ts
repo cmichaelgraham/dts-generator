@@ -1,4 +1,5 @@
 /// <reference path="./typings/tsd" />
+/// <reference path="./typings/typescript/typescript_internal" />
 /// <reference path="./tsextra" />
 
 import fs = require('fs');
